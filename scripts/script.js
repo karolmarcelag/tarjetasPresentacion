@@ -130,12 +130,12 @@ function mostrarRegistros()
                     var codigo = ""+
                     "<table style='margin-top:15px; width:100%;'>"+
                         "<tr>"+
-                            "<td><b>Nombre<b></td>"+
-                            "<td><b>Correo<b></td>"+
-                            "<td><b>Puesto/Cargo<b></td>"+
-                            "<td><b>URL Empresa<b></td>"+
-                            "<td><b>Empresa<b></td>"+
-                            "<td><b>Celular<b></td>"+
+                            "<td class='encabezado'><b>Nombre<b></td>"+
+                            "<td class='encabezado'><b>Correo<b></td>"+
+                            "<td class='encabezado'><b>Puesto/Cargo<b></td>"+
+                            "<td class='encabezado'><b>URL Empresa<b></td>"+
+                            "<td class='encabezado'><b>Empresa<b></td>"+
+                            "<td class='encabezado'><b>Celular<b></td>"+
                             "<td></td>"+
                             "<td></td>"+
                         "</tr>"
@@ -207,42 +207,23 @@ function actualizar_usuario(_id)
     $("#guardar").html("Actualizar")
 }
 
-function generarQR()
+function generarQR(_id)
 {
-    $.post("generarQR.php",
+    $.post("funciones/generarQR.php",
         {
-            contenidoQR: $("#contenidoQR").val()
+            nombre: tabla_usuarios[_id]["nombre"],
+            correo: tabla_usuarios[_id]["correo"],
+            puesto_cargo: tabla_usuarios[_id]["puesto_cargo"],
+            url_empresa: tabla_usuarios[_id]["url_empresa"],
+            empresa: tabla_usuarios[_id]["empresa"],
+            celular: tabla_usuarios[_id]["celular"]
         },
         function(respuesta)
         {
             var datos = JSON.parse(respuesta)
             var url = datos[0]["url"]
-            var codigo = "" +
-            "<img style='margin-top:25px;' src='" + url + "'>"
-            //window.location.href = "";
-            $("#imagenQR").html(codigo)
+            window.open('codigos/'+url, '_blank');
         })
-
-    /*$.post("funciones/generarQR.php",
-    {
-        contenidoQR: $("#contenido").val()
-    },
-    function(respuesta)
-    {   
-        var datos = JSON.parse(respuesta)
-        var url = datos[0]["url"]
-        url = $("contenido")
-        var codigo = "" +
-        "<img style='margin-top:25px;' src='" + url + "'>"+
-        window.open('http://www.tupagina.com/pagina-en-tab.php', 'QR Tarjeta Presentación');
-        window.location.href = "#imagenQR";
-
-        "<a href='" + url + "' download='QR Tarjeta Presentación'>"+
-            "<button style='width:90%; margin-left: 5%; margin-bottom:1%; height:40px; border-radius:3px;'>Descargar QR</button>"+
-        "</a>"
-
-        $("#imagenQR").html(codigo)
-    })*/
 }
 
 function limpiar()
