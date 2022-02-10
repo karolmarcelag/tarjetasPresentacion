@@ -1,18 +1,32 @@
 <html>
-    
     <head>
         <meta charset="utf-8">
         <title>Tarjetas de Presentación</title>
         <link rel="icon" href="https://www.syscom.mx/favico/syscom_favico.png">
         <meta name="viewport" content="width=device-width, initial-scale=1, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-        <link href="estilo.css" rel="stylesheet">
-        <script src="jquery-3.6.0.js"></script>
-        <script src="jquery-3.6.0.min.js"></script>
-        <script src="script.js"></script>
+        <link href="estilos/estilo.css" rel="stylesheet">
+        <script src="scripts/jquery-3.6.0.js"></script>
+        <script src="scripts/jquery-3.6.0.min.js"></script>
+        <script src="scripts/script.js"></script>
     </head>
-
-    <body>
-        <button id="iniciar">Iniciar</button>
+    <body onload="mostrarRegistros()">
+        <div id="contenido">
+            Nombre<br>
+            <input type="text" id="nombre"><br><br>
+            Correo<br>
+            <input type="text" id="correo"><br><br>
+            Puesto/Cargo<br>
+            <input type="text" id="puesto_cargo"><br><br>
+            URL Empresa<br>
+            <input type="text" id="url_empresa"><br><br>
+            Empresa<br>
+            <input type="text" id="empresa"><br><br>
+            Celular<br>
+            <input type="text" id="celular"><br><br>
+            <button id="guardar">Guardar</button>
+            <button id="limpiar">Limpiar</button>
+            <span id="imagenQR"></span>
+        </div>
+        <span id="tabla"></span>
     </body>
-
 </html>
